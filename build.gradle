@@ -1,0 +1,110 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'jacoco'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'org.springframework.boot' version '2.6.2'
+    id 'org.sonarqube' version '3.3'
+    id 'org.owasp.dependencycheck' version '6.5.2.1'
+}
+
+group = 'com.example.universe.simulator'
+version = '1.0.0'
+sourceCompatibility = '17'
+
+idea {
+    module {
+        downloadJavadoc = true
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+def coverageExclusions = []
+
+jacocoTestReport {
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: coverageExclusions)
+        }))
+    }
+    reports {
+        xml.required = true
+    }
+}
+
+jacocoTestCoverageVerification {
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: coverageExclusions)
+        }))
+    }
+    violationRules {
+        rule {
+            limit {
+                minimum = 1
+            }
+        }
+    }
+}
+
+sonarqube {
+    properties {
+        property 'sonar.host.url', 'https://sonarcloud.io'
+        property 'sonar.organization', 'universe-simulator'
+        property 'sonar.login', System.getenv('US_SONARQUBE_TOKEN')
+        property 'sonar.coverage.exclusions', coverageExclusions
+    }
+}
+
+dependencyCheck {
+    failBuildOnCVSS = 7
+}
+
+bootBuildImage {
+    imageName = "universesimulator/${project.name}:${System.getenv('GITHUB_RUN_NUMBER')}"
+    publish = true
+    docker {
+        publishRegistry {
+            username = System.getenv('US_DOCKER_REGISTRY_USER')
+            password = System.getenv('US_DOCKER_REGISTRY_TOKEN')
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven {
+        name = 'GitHubPackages'
+        url = 'https://maven.pkg.github.com/nkvaratskhelia/universe-simulator-back-java-common'
+        credentials {
+            username = System.getenv('US_GITHUB_PACKAGES_USER')
+            password = System.getenv('US_GITHUB_PACKAGES_TOKEN')
+        }
+        metadataSources {
+            gradleMetadata()
+        }
+    }
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:2021.0.0'
+    }
+}
+
+dependencies {
+    implementation 'com.example.universe.simulator:common:0.3.2'
+    implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
+    compileOnly 'org.projectlombok:lombok'
+    runtimeOnly 'org.springframework.cloud:spring-cloud-starter-bootstrap'
+    runtimeOnly 'org.springframework.cloud:spring-cloud-starter-sleuth'
+    runtimeOnly 'org.springframework.cloud:spring-cloud-starter-vault-config'
+    runtimeOnly 'org.springframework.cloud:spring-cloud-sleuth-zipkin'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+}
