@@ -97,7 +97,7 @@ dependencyManagement {
 }
 
 dependencies {
-    implementation 'com.example.universe.simulator:common:0.3.2'
+    implementation 'com.example.universe.simulator:common:0.3.3'
     implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'org.springframework.cloud:spring-cloud-starter-bootstrap'
