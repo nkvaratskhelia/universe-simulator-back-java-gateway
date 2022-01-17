@@ -14,13 +14,13 @@ import javax.validation.constraints.NotBlank;
 public class AppProperties {
 
     /**
-     * Service properties.
+     * Route properties.
      */
     @Valid
-    private ServiceProperties service = new ServiceProperties();
+    private RouteProperties routes = new RouteProperties();
 
     @Getter @Setter
-    public static class ServiceProperties {
+    public static class RouteProperties {
 
         /**
          * Entity service url.

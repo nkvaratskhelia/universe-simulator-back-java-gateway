@@ -21,10 +21,10 @@ public class GatewayApplication {
         return builder.routes()
             .route(predicate -> predicate
                 .path("/entity-service/**")
-                .uri(properties.getService().getEntityServiceUrl()))
+                .uri(properties.getRoutes().getEntityServiceUrl()))
             .route(predicate -> predicate
                 .path("/event-service/**")
-                .uri(properties.getService().getEventServiceUrl()))
+                .uri(properties.getRoutes().getEventServiceUrl()))
             .build();
     }
 }
