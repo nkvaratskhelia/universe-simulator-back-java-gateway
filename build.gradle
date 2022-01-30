@@ -46,6 +46,18 @@ bootBuildImage {
 
 repositories {
     mavenCentral()
+    mavenLocal()
+    maven {
+        name = 'GitHubPackages'
+        url = 'https://maven.pkg.github.com/nkvaratskhelia/universe-simulator-back-java-common'
+        credentials {
+            username = System.getenv('US_GITHUB_PACKAGES_USER')
+            password = System.getenv('US_GITHUB_PACKAGES_TOKEN')
+        }
+        metadataSources {
+            gradleMetadata()
+        }
+    }
 }
 
 dependencyManagement {
@@ -55,6 +67,7 @@ dependencyManagement {
 }
 
 dependencies {
+    implementation 'com.example.universe.simulator:common:0.4.8'
     implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
     runtimeOnly 'org.springframework.boot:spring-boot-starter-amqp'
     runtimeOnly 'org.springframework.cloud:spring-cloud-starter-consul-config'
