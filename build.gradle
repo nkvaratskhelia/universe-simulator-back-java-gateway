@@ -67,7 +67,7 @@ dependencyManagement {
 }
 
 dependencies {
-    implementation 'com.example.universe.simulator:common:0.5.4'
+    implementation 'com.example.universe.simulator:common:0.5.5'
     implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
     runtimeOnly 'org.springframework.boot:spring-boot-starter-amqp'
     runtimeOnly 'org.springframework.cloud:spring-cloud-starter-consul-config'
