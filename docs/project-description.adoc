@@ -1,4 +1,4 @@
 = Project description
 
-Central access point for all incoming requests. Routes requests to various
-services based on url.
+Central access point for all incoming requests. The gateway routes requests
+to various services based on the request url.
