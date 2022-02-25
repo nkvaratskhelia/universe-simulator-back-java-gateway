@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id 'idea'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'org.springframework.boot' version '2.6.3'
+    id 'org.springframework.boot' version '2.6.4'
     id 'org.sonarqube' version '3.3'
     id 'org.owasp.dependencycheck' version '6.5.3'
 }
@@ -68,7 +68,7 @@ dependencyManagement {
 
 dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
-    runtimeOnly 'com.example.universe.simulator:common:0.7.0'
+    runtimeOnly 'com.example.universe.simulator:common:0.7.2'
     runtimeOnly 'org.springframework.boot:spring-boot-starter-amqp'
     runtimeOnly 'org.springframework.cloud:spring-cloud-starter-consul-config'
     runtimeOnly 'org.springframework.cloud:spring-cloud-starter-consul-discovery'
