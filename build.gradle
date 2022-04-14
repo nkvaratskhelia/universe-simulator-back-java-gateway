@@ -75,5 +75,5 @@ dependencies {
     runtimeOnly 'org.springframework.cloud:spring-cloud-starter-consul-discovery'
     runtimeOnly 'org.springframework.cloud:spring-cloud-starter-sleuth'
     runtimeOnly 'org.springframework.cloud:spring-cloud-sleuth-zipkin'
-    runtimeOnly 'net.logstash.logback:logstash-logback-encoder:7.1'
+    runtimeOnly 'net.logstash.logback:logstash-logback-encoder:7.1.1'
 }
