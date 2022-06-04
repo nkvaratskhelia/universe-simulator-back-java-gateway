@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: universe-simulator-gateway-app-pod
+  labels:
+    app: universe-simulator-gateway-app
+spec:
+  containers:
+    - name: universe-simulator-gateway-app
+      image: universesimulator/gateway:57
+      env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: dev
+        - name: US_CONSUL_HOST
+          value: host.docker.internal
+        - name: US_CONSUL_PORT
+          value: "8500"
+      volumeMounts:
+        - name: cert-volume
+          mountPath: /home/cnb/universe-simulator/universe-simulator.p12
+  volumes:
+    - name: cert-volume
+      hostPath:
+        path: /Users/nkvaratskhelia/universe-simulator/universe-simulator.p12
