@@ -1,33 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: entity-service-postgres-deployment
+  name: universe-simulator-gateway-app-deployment
   labels:
-    service: entity-service-postgres
+    app: universe-simulator-gateway-app
 spec:
   template:
     metadata:
       labels:
-        service: entity-service-postgres
+        app: universe-simulator-gateway-app
     spec:
       containers:
-        - name: postgres
-          image: postgres:14.2
+        - name: universe-simulator-gateway-app
+          image: universesimulator/gateway:57
           env:
-            - name: POSTGRES_DB
-              value: entity-service
-            - name: POSTGRES_USER
-              value: user
-            - name: POSTGRES_PASSWORD
-              value: password
-          ports:
-            - containerPort: 5432
+            - name: SPRING_PROFILES_ACTIVE
+              value: dev
+            - name: US_CONSUL_HOST
+              value: host.docker.internal
+            - name: US_CONSUL_PORT
+              value: "8500"
           volumeMounts:
-            - name: entity-service-postgres
-              mountPath: /var/lib/postgresql/data
+            - name: cert-volume
+              mountPath: /home/cnb/universe-simulator/universe-simulator.p12
       volumes:
-        - name: entity-service-postgres
+        - name: cert-volume
+          hostPath:
+            path: /Users/nkvaratskhelia/universe-simulator/universe-simulator.p12
   selector:
     matchLabels:
-      service: entity-service-postgres
+      app: universe-simulator-gateway-app
   replicas: 1
