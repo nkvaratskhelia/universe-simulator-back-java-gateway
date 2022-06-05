@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: entity-service-postgres-service
+  name: universe-simulator-gateway-app-service
   labels:
-    service: entity-service-postgres
+    app: universe-simulator-gateway-app
 spec:
   type: NodePort
   ports:
-    - port: 5432
+    - port: 8443
       nodePort: 30000
   selector:
-    service: entity-service-postgres
+    app: universe-simulator-gateway-app

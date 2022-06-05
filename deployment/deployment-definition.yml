@@ -20,6 +20,8 @@ spec:
               value: host.docker.internal
             - name: US_CONSUL_PORT
               value: "8500"
+          ports:
+            - containerPort: 8443
           volumeMounts:
             - name: cert-volume
               mountPath: /home/cnb/universe-simulator/universe-simulator.p12
