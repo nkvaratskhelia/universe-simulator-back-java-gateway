@@ -2,13 +2,16 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: universe-simulator-gateway-app-deployment
+  namespace: universe-simulator
   labels:
-    app: universe-simulator-gateway-app
+    app: universe-simulator
+    service: universe-simulator-gateway-app
 spec:
   template:
     metadata:
       labels:
-        app: universe-simulator-gateway-app
+        app: universe-simulator
+        service: universe-simulator-gateway-app
     spec:
       containers:
         - name: universe-simulator-gateway-app
@@ -29,5 +32,6 @@ spec:
             path: /Users/nkvaratskhelia/universe-simulator/universe-simulator.p12
   selector:
     matchLabels:
-      app: universe-simulator-gateway-app
+      app: universe-simulator
+      service: universe-simulator-gateway-app
   replicas: 1
