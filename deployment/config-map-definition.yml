@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: universe-simulator-gateway-app-config-map
+  namespace: universe-simulator
+  labels:
+    app: universe-simulator
+    service: universe-simulator-gateway-app
+data:
+  SPRING_PROFILES_ACTIVE: dev
+  US_CONSUL_HOST: host.docker.internal
+  US_CONSUL_PORT: "8500"

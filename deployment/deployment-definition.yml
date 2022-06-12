@@ -16,13 +16,9 @@ spec:
       containers:
         - name: universe-simulator-gateway-app
           image: universesimulator/gateway:57
-          env:
-            - name: SPRING_PROFILES_ACTIVE
-              value: dev
-            - name: US_CONSUL_HOST
-              value: host.docker.internal
-            - name: US_CONSUL_PORT
-              value: "8500"
+          envFrom:
+            - configMapRef:
+                name: universe-simulator-gateway-app-config-map
           volumeMounts:
             - name: cert-volume
               mountPath: /home/cnb/universe-simulator/universe-simulator.p12
