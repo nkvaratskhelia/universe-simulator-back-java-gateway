@@ -22,6 +22,7 @@ spec:
           volumeMounts:
             - name: cert-volume
               mountPath: /home/cnb/universe-simulator/universe-simulator.p12
+              readOnly: true
       volumes:
         - name: cert-volume
           hostPath:
