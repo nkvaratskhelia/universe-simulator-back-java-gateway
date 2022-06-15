@@ -23,6 +23,12 @@ spec:
             - name: cert-volume
               mountPath: /home/cnb/universe-simulator/universe-simulator.p12
               readOnly: true
+          readinessProbe:
+            periodSeconds: 2
+            httpGet:
+              scheme: HTTPS
+              port: 8443
+              path: /actuator/health
       volumes:
         - name: cert-volume
           hostPath:
