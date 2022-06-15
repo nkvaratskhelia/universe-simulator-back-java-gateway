@@ -29,6 +29,13 @@ spec:
               scheme: HTTPS
               port: 8443
               path: /actuator/health
+          livenessProbe:
+            initialDelaySeconds: 60
+            periodSeconds: 2
+            httpGet:
+              scheme: HTTPS
+              port: 8443
+              path: /actuator/health
       volumes:
         - name: cert-volume
           hostPath:
