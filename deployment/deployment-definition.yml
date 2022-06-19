@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: universe-simulator-gateway-app
-          image: universesimulator/gateway:57
+          image: universesimulator/gateway:70
           envFrom:
             - configMapRef:
                 name: universe-simulator-gateway-app-config-map
