@@ -7,10 +7,8 @@ metadata:
     app: universe-simulator
     service: universe-simulator-gateway-app
 spec:
-  type: NodePort
   ports:
     - port: 8443
-      nodePort: 30000
   selector:
     app: universe-simulator
     service: universe-simulator-gateway-app

@@ -1,0 +1,13 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: universe-simulator-ingress
+  namespace: universe-simulator
+  labels:
+    app: universe-simulator
+spec:
+  defaultBackend:
+    service:
+      name: universe-simulator-gateway-app-service
+      port:
+        number: 8443
