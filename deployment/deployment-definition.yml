@@ -19,27 +19,17 @@ spec:
           envFrom:
             - configMapRef:
                 name: universe-simulator-gateway-app-config-map
-          volumeMounts:
-            - name: cert-volume
-              mountPath: /home/cnb/universe-simulator/universe-simulator.p12
-              readOnly: true
           readinessProbe:
             periodSeconds: 2
             httpGet:
-              scheme: HTTPS
               port: 8443
               path: /actuator/health
           livenessProbe:
             initialDelaySeconds: 60
             periodSeconds: 2
             httpGet:
-              scheme: HTTPS
               port: 8443
               path: /actuator/health
-      volumes:
-        - name: cert-volume
-          hostPath:
-            path: /Users/nkvaratskhelia/universe-simulator/universe-simulator.p12
   selector:
     matchLabels:
       app: universe-simulator
