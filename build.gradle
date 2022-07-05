@@ -70,4 +70,6 @@ dependencies {
     runtimeOnly 'org.springframework.cloud:spring-cloud-starter-consul-discovery'
     runtimeOnly 'org.springframework.cloud:spring-cloud-starter-sleuth'
     runtimeOnly 'net.logstash.logback:logstash-logback-encoder:7.2'
+    // needed to prevent netty dns error on aarch_64 (mac M1)
+    runtimeOnly "io.netty:netty-resolver-dns-native-macos:${dependencyManagement.importedProperties['netty.version']}:osx-aarch_64"
 }
