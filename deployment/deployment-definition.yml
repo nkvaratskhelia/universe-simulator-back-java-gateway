@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: universe-simulator-gateway-app
-          image: universesimulator/gateway:70
+          image: universesimulator/gateway:90
           envFrom:
             - configMapRef:
                 name: universe-simulator-gateway-app-config-map
@@ -23,13 +23,13 @@ spec:
             periodSeconds: 2
             httpGet:
               port: 8443
-              path: /actuator/health
+              path: /actuator/health/readiness
           livenessProbe:
             initialDelaySeconds: 60
             periodSeconds: 2
             httpGet:
               port: 8443
-              path: /actuator/health
+              path: /actuator/health/liveness
   selector:
     matchLabels:
       app: universe-simulator
