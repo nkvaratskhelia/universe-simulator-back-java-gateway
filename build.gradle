@@ -32,7 +32,7 @@ repositories {
 
 ext {
     set('commonVersion', '2.4.6')
-    set('springBootAdminVersion', '3.1.5')
+    set('springBootAdminVersion', '3.1.6')
     set('logstashLogbackEncoderVersion', '7.4')
 }
 
