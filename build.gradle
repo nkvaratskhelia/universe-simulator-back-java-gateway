@@ -16,6 +16,12 @@ java {
     }
 }
 
+idea {
+    module {
+        downloadJavadoc = true
+    }
+}
+
 repositories {
     mavenCentral()
     mavenLocal()
@@ -55,12 +61,6 @@ dependencies {
     // needed to prevent netty dns error on aarch_64 (mac M1)
     runtimeOnly "io.netty:netty-resolver-dns-native-macos:${dependencyManagement.importedProperties['netty.version']}:osx-aarch_64"
     runtimeOnly "de.codecentric:spring-boot-admin-starter-client:${springBootAdminVersion}"
-}
-
-idea {
-    module {
-        downloadJavadoc = true
-    }
 }
 
 sonarqube {
