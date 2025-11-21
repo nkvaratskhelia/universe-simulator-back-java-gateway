@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id 'idea'
     id 'io.spring.dependency-management' version '1.1.7'
-    id 'org.springframework.boot' version '3.5.8'
+    id 'org.springframework.boot' version '4.0.0'
     id 'org.sonarqube' version '7.1.0.6387'
     id 'org.owasp.dependencycheck' version '12.1.9'
 }
@@ -39,7 +39,7 @@ repositories {
 }
 
 ext {
-    set('commonVersion', '3.3.5')
+    set('commonVersion', '3.3.7')
     set('springBootAdminVersion', '3.5.6')
     set('logstashLogbackEncoderVersion', '9.0')
 }
