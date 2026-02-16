@@ -2,9 +2,9 @@ plugins {
     id 'java'
     id 'idea'
     id 'io.spring.dependency-management' version '1.1.7'
-    id 'org.springframework.boot' version '4.0.1'
+    id 'org.springframework.boot' version '4.0.2'
     id 'org.sonarqube' version '7.2.2.6593'
-    id 'org.owasp.dependencycheck' version '12.1.9'
+    id 'org.owasp.dependencycheck' version '12.2.0'
 }
 
 group = 'com.example.universe.simulator'
@@ -40,13 +40,13 @@ repositories {
 
 ext {
     set('commonVersion', '3.4.4')
-    set('springBootAdminVersion', '3.5.6')
+    set('springBootAdminVersion', '4.0.0')
     set('logstashLogbackEncoderVersion', '9.0')
 }
 
 dependencyManagement {
     imports {
-        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:2025.1.0'
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:2025.1.1'
     }
 }
 
